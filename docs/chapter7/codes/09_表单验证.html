@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单验证</title>
+</head>
+<body>
+<!--<form action="#" method="post">
+    <input type="text" name="data" required>
+    <input type="submit" value="提交">
+</form>-->
+<!--<form action="#" method="post">
+    <input type="text" name="data">
+    <input type="submit" value="提交">
+</form>
+<script>
+    var myform = document.forms[0];
+    var inputElem = myform.elements[0];
+    inputElem.addEventListener('blur',function(event){
+        // 验证逻辑
+        var target = event.target || event.srcElement;
+        if (target.value == null || target.value == ''){
+            alert('请输入必要的内容');
+        }
+    });
+</script>-->
+<!--<form action="#" method="post">
+    email:<input type="email" name="email">
+    url:<input type="url" name="url">
+    number:<input type="number" name="number">
+    date:<input type="date" name="date">
+    <input type="submit" value="提交">
+</form>-->
+<!--<form action="#" method="post">
+    <input type="text" name="data" minlength="3" maxlength="5">
+    <input type="submit" value="提交">
+</form>-->
+<form>
+    用户名:<input id="user" type="text" required><br>
+    密码:<input id="pwd" type="text" pattern="^[0-9]{6,8}$"><br>
+    Email:<input id="mail" type="email"><br>
+    年龄:<input id="age" step="5" type="number" min="20"><br>
+    <input type="submit">
+</form>
+<script>
+    var user = document.getElementById("user");
+    user.onblur = function(){
+        if(user.validity.valid){
+            alert("验证通过.");
+        }else if(user.validity.valueMissing){
+            alert("用户名为空.");
+        }
+    }
+    var pwd = document.getElementById("pwd");
+    pwd.onblur = function(){
+        if(pwd.validity.valid){
+            alert("验证通过.");
+        }else if(pwd.validity.patternMismatch){
+            alert("密码输入有误.");
+        }
+    }
+    var mail = document.getElementById("mail");
+    mail.onblur = function(){
+        if(mail.validity.valid){
+            alert("验证通过.");
+        }else if(mail.validity.typeMismatch){
+            alert("Email输入有误.");
+        }
+    }
+    var age = document.getElementById("age");
+    age.onblur = function(){
+        if(age.validity.valid){
+            alert("验证通过.");
+        }else if(age.validity.rangeUnderflow){
+            alert("年龄过小.");
+        }else if(age.validity.stepMismatch){
+            alert("年龄有误.");
+        }
+    }
+</script>
+</body>
+</html>
